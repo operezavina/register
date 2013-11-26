@@ -7,7 +7,6 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem "paperclip", "~> 3.0"
 gem "simple_calendar", "~> 0.1.9"
 # Use postgresql as the database for Active Record
 gem 'pg'

@@ -5,6 +5,7 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:register_test</jdbc-url>
       <user-name>register</user-name>
+      <user-password>dfdadfd8dfcbdfdcdfc5</user-password>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
@@ -18,6 +19,7 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:register_production</jdbc-url>
       <user-name>register</user-name>
+      <user-password>dfdadfd8dfcbdfdcdfc5</user-password>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
@@ -31,6 +33,21 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:register_development</jdbc-url>
       <user-name>register</user-name>
+      <user-password>dfdadfd8dfcbdfdcdfc5</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
+        </library>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails register: cucumber" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="8b6fe57c-df96-4c31-bbf4-f7ca86ad0d61">
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:attendance_tes</jdbc-url>
+      <user-name>vagrant</user-name>
+      <user-password>dfdadfd8dfcbdfdcdfc5</user-password>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
