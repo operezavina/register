@@ -1,0 +1,34 @@
+<h1>Assign projects</h1>
+<%= form_for(@event) do |f| %>
+    <% if @event.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@event.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+          <ul>
+            <% @event.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :Name %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :Start_time %><br>
+      <%= f.datetime_field :start_time %>
+    </div>
+    <div class="field">
+      <%= f.label :End_time %><br>
+      <%= f.datetime_field :end_time %>
+    </div>
+    <div class="field">
+      <%= f.label :Project %><br>
+      <%= collection_select(:project, :project_id, Project.all, :id, :name, {include_blank: true}) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit value:"Assign project" %>
+    </div>
+<% end %>

@@ -1,0 +1,28 @@
+<h1>Admin Dashboard</h1>
+<h2></h2>
+<li><%= link_to "Manage User", users_path, id: "manage_users"  %></li><br>
+<li><%= link_to "Export Events", events_path, id: "manage_events"  %></li> <br>
+<li><%= link_to "Manage Projects", projects_path, id: "manage_projects"  %></li> <br>
+<li><%= link_to "Assign Projects", events_path, id: "manage_projects"  %></li> <br>
+<section>
+  <%= calendar @events,  {:prev_text=>"prev   ", :next_text=>"   next"} do |event| %>
+      <div><%= link_to event.name, events_path %> Project <%= link_to event.project ? event.project.name : "No project", event.user %>
+        <%= distance_of_time_in_words(event.start_time, event.end_time ? event.end_time : DateTime.now)  %>
+        <%= link_to "delete", event, method: :delete, data: { confirm: "You sure?" } %>
+      </div>
+  <% end %>
+</section>
+<h2>Duration by employee</h2>
+<section>
+  <% @events_time.each do |e| %>
+  <li><%= e.user.name %></li><br>
+  Hours <%= e.duration %><hr>
+  <% end %>
+</section>
+<h2><strong>Duration by project </strong></h2>
+<section>
+  <% @events_project.each do |e| %>
+      <li><%= e.project ? e.project.name : "No project"  %></li><br>
+      Hours <%= e.duration %><hr>
+  <% end %>
+</section>

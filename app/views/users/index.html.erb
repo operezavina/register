@@ -1,0 +1,33 @@
+<% provide(:title, 'All users') %>
+<h1>All Members</h1>
+<%= link_to "Download Excel", users_path(format: "xls"), :class=>"btn btn-primary"%>
+<%= will_paginate @users %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Level</th>
+    <th>Name</th>
+    <th>Last</th>
+    <th>Email</th>
+    <th>Company</th>
+    <th>Address</th>
+    <th>Zip</th>
+    <th>Phone</th>
+    <th>Fax</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+<ul class="pagination">
+  <% @users.each do |user| %>
+      <%= render user %>
+  <% end %>
+</ul>
+  </tbody>
+</table>
+<%= will_paginate @users %>
+
+<p>New Member? <%= link_to "Sign up now!", signup_path %></p>

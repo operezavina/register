@@ -1,0 +1,18 @@
+
+  <tr>
+    <td><%= user.level %> </td>
+    <td><%= link_to user.name, user %></td>
+    <td><%= user.last %> </td>
+    <td><%= user.email %> </td>
+    <td><%= user.company %> </td>
+    <td><%= user.address %> </td>
+    <td><%= user.zip %> </td>
+    <td><%= user.phone %> </td>
+    <td><%= user.fax %> </td>
+    <td><%= user.description %> </td>
+    <td><%= link_to "Edit", edit_user_path(user) %></td>
+  <% if current_user.admin? && !current_user?(user) %>
+       <td><%= link_to "delete", user, method: :delete,
+                    data: { confirm: "You sure?" } %></td>
+  <% end %>
+  </tr>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Members">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Level</Data></Cell>
+        <Cell><Data ss:Type="String">First</Data></Cell>
+        <Cell><Data ss:Type="String">Last</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Company</Data></Cell>
+        <Cell><Data ss:Type="String">Address</Data></Cell>
+        <Cell><Data ss:Type="String">Zip</Data></Cell>
+        <Cell><Data ss:Type="String">Phone</Data></Cell>
+        <Cell><Data ss:Type="String">Fax</Data></Cell>
+        <Cell><Data ss:Type="String">Description</Data></Cell>
+      </Row>
+      <% @users = User.order("name") %>
+      <% @users.each do |user| %>
+          <Row>
+            <Cell><Data ss:Type="Number"><%= user.id %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.level %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.last %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.email %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.company %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.address %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.zip %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.phone %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.fax %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user.description %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

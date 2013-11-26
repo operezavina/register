@@ -1,0 +1,13 @@
+<h1>Members Hispanic Chamber of Commerce</h1>
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+  <% @users.each do |u| %>
+      <tr>
+        <td><%= u.name %></td>
+        <td><%= u.email %></td>
+  <% end %>
+  </tr>
+</table>

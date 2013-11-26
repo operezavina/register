@@ -1,0 +1,54 @@
+<% provide(:title, @user.name) %>
+<script>
+    $(function() {
+        $( "#selectable" ).selectable();
+    });
+</script>
+<div class="row">
+  <aside class="users">
+    <section>
+      <h1>
+        <%= gravatar_for (@user) %>
+        <%= @user.name %><br><hr>
+        <%= link_to "Register new event (lunch,out office)", new_event_path %>
+      </h1>
+    </section>
+    <section>
+    <%= calendar @events,  {:prev_text=>"prev", :next_text=>"next"} do |event| %>
+        <div id="selectable"><%=  link_to event.name, events_path, class:'ui-widget-content' %></div>
+    <% end %>
+    </section>
+    <section>
+     <h2>Projects Working</h2>
+
+    </section>
+    <section>
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Project</th>
+          <th></th>
+          <th>Change Status</th>
+          <th></th>
+        </tr>
+        <% @events.each do |event| %>
+            <tr>
+              <td><%= event.id %></td>
+              <td><%= event.name %></td>
+              <td><%= event.start_time %></td>
+              <td><%= event.end_time %></td>
+              <td><%= event.project ? event.project.name : "No project" %></td>
+              <td><%= link_to 'Edit', edit_event_path(event) %></td>
+              <td><%= link_to 'Completed', edit_project_path(event.project) %></td>
+              <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+      </table>
+    </section>
+
+  </aside>
+
+</div>

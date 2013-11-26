@@ -1,0 +1,56 @@
+<h3>Register attendance</h3>
+<script>
+    function Label(printarea)
+    {
+
+        var mywindow = window.open('', 'Label', 'height=150,width=400');
+        mywindow.document.write('<html><head><title></title>');
+        mywindow.document.write('<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />')
+        mywindow.document.write('<style>' +
+                ' '+
+                '@media print '+
+                '{#non-printable { display: none; }'+
+                '}</style>' );
+        mywindow.document.write('</head><body>');
+        mywindow.document.write(document.getElementById(printarea).innerHTML);
+        mywindow.document.write('</body><button id="non-printable" type="button" onclick="window.print()" onchange="window.close()" class="btn btn-success">Print</button></html>');
+
+        //mywindow.print();
+        //mywindow.close();
+
+        return true;
+    }
+
+
+</script>
+<form role="form" action="/home">
+  <div class="form-group">
+    <label for="text1">Name o Email</label>
+    <input type="text" name="texto" class="form-control" id="texto" placeholder="Enter Name or Email" data-toggle="tooltip" title="information about you"><br>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<%= will_paginate @users %>
+<table class="table">
+<th>Name</th>
+<th>Action</th>
+<th>Label</th>
+<% @users.each do |user| %>
+<tr>
+<td id="printableArea<%=user.id %>">
+   <%= user.name.to_s+" "+user.last.to_s %><br>
+   <%= user.company %><br></div>
+  <div id="printable"></div><strong>Hispanic Chamber of Commerce of Wisconsin </strong><br>
+</td>
+<td><%= link_to "Present", events_path(user.id), :method => :post, :class=>'btn btn-success',:onclick=>'alert("Welcome to Monthly Meeting")' %></td>
+      <td><button type="button"  onclick="Label('printableArea<%=user.id %>')" class="btn btn-primary">Print</button></td>
+</tr>
+<% end %>
+</table>
+<%= will_paginate @users %>
+
+<% calendar @events,  {:prev_text=>"prev   ", :next_text=>"   next"} do |event| %>
+<% end %>
+

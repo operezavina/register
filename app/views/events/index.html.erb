@@ -1,0 +1,39 @@
+<% provide(:title, 'All Events') %>
+<h1>Events</h1>
+<%= form_tag("/events", method: "get") do %>
+    <%= label_tag(:name, "Search for:") %>
+    <%= collection_select(:user, :user_id, User.all, :id, :name, {include_blank: true} ) %>
+    <%= submit_tag("Apply") %><%= link_to "  Show all  ", events_path %>
+<% end %>
+<p>
+  Download:
+  <%= link_to "CSV", events_path(format: "csv"), :class=>"btn btn-primary" %> |
+  <%= link_to "Excel", events_path(format: "xls"), :class=>"btn btn-primary"%>
+</p>
+<%= will_paginate @events %>
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Work</th>
+    <th>Project</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @events.each do |event| %>
+      <tr>
+        <td><%= event.id %></td>
+        <td><%= event.name %></td>
+        <td><%= event.start_time %></td>
+        <td><%= event.end_time %></td>
+        <td><%= distance_of_time_in_words(event.start_time, event.end_time ? event.end_time : DateTime.now)  %></td>
+        <td><%= event.project ? event.project.name : "No project" %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+<%= will_paginate @events %>
+<%= link_to "Return Admin", admin_path %>
